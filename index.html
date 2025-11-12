@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kavan Trivedi - Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #2563eb;
+        --secondary: #7c3aed;
+        --accent: #f59e0b;
+        --dark: #1e293b;
+        --light: #f8fafc;
+        --gray: #64748b;
+        --success: #10b981;
+        --warning: #f59e0b;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        scroll-behavior: smooth;
+      }
+
+      /* Cover Page */
+      .cover-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cover-page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      .cover-content {
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      /* .profile-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: bold;
+      } */
+      .profile-photo img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        background-color: #fff; /* fills background if needed */
+        border-radius: 50%;
+        border: 5px solid white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: bold;
+      }
+
+      .cover-page h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .cover-page .program {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+      }
+
+      .cover-page .university {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        opacity: 0.8;
+      }
+
+      .tagline {
+        font-size: 1.3rem;
+        font-style: italic;
+        margin: 2rem 0;
+        padding: 1rem 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        backdrop-filter: blur(10px);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: white;
+      }
+
+      /* Table of Contents */
+      .toc {
+        background: var(--light);
+        padding: 3rem;
+        border-radius: 15px;
+        margin: 3rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .toc h2 {
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+      }
+
+      .toc-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .toc-list li a {
+        display: block;
+        padding: 1rem 1.5rem;
+        background: white;
+        border-left: 4px solid var(--primary);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--dark);
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .toc-list li a:hover {
+        transform: translateX(10px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-left-color: var(--secondary);
+      }
+
+      /* Section Styles */
+      section {
+        margin: 4rem 0;
+        padding: 3rem;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      section h2 {
+        color: var(--primary);
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid var(--accent);
+      }
+
+      section h3 {
+        color: var(--secondary);
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+      }
+
+      /* Introduction */
+      .philosophy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .philosophy-card {
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .philosophy-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .philosophy-card h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Resume Section */
+      .resume-link-container {
+        text-align: center;
+        padding: 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        margin: 2rem 0;
+      }
+
+      .resume-link {
+        display: inline-block;
+        padding: 1rem 3rem;
+        background: white;
+        color: var(--primary);
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .resume-link:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Skills Radar */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .skill-gauge {
+        position: relative;
+        padding: 2rem;
+        background: var(--light);
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .skill-name {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .gauge-container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 1rem;
+      }
+
+      .gauge-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: conic-gradient(var(--gray) 0deg, var(--gray) 360deg);
+        opacity: 0.2;
+      }
+
+      .gauge-fill {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .gauge-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .expert {
+        background: conic-gradient(
+          var(--success) 0deg,
+          var(--success) 324deg,
+          transparent 324deg
+        );
+      }
+      .advanced {
+        background: conic-gradient(
+          var(--primary) 0deg,
+          var(--primary) 252deg,
+          transparent 252deg
+        );
+      }
+      .intermediate {
+        background: conic-gradient(
+          var(--warning) 0deg,
+          var(--warning) 200deg,
+          transparent 200deg
+        );
+      }
+
+      .proficiency-label {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .expert-label {
+        background: var(--success);
+      }
+      .advanced-label {
+        background: var(--primary);
+      }
+      .intermediate-label {
+        background: var(--warning);
+      }
+
+      /* Project Timeline */
+      .timeline {
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(
+          to bottom,
+          var(--primary),
+          var(--secondary)
+        );
+      }
+
+      .timeline-item {
+        position: relative;
+        padding: 2rem 0 2rem 120px;
+        margin-bottom: 2rem;
+      }
+
+      .timeline-marker {
+        position: absolute;
+        left: 38px;
+        top: 2rem;
+        width: 25px;
+        height: 25px;
+        background: var(--primary);
+        border: 4px solid white;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--primary);
+      }
+
+      .timeline-content {
+        background: var(--light);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-content h3 {
+        margin-top: 0;
+        color: var(--primary);
+      }
+
+      .ethical-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--success);
+        color: white;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-left: 1rem;
+      }
+
+      /* .project-image-placeholder {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      } */
+
+      .project-image-placeholder-attendease {
+        width: 100%;
+        height: 350px;
+        border-radius: 12px; /* smooth corners */
+        display: flex;
+        align-items: center;
+        color: white;
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-image-placeholder-med {
+        width: 100%;
+        height: 350px;
+        border-radius: 12px; /* smooth corners */
+        display: flex;
+        align-items: center;
+        color: white;
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-image-placeholder-cricket {
+        width: 100%;
+        height: 350px;
+        border-radius: 12px; /* smooth corners */
+        display: flex;
+        align-items: center;
+        color: white;
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-image-placeholder-resume {
+        width: 100%;
+        height: 350px;
+        border-radius: 12px; /* smooth corners */
+        display: flex;
+        align-items: center;
+        color: white;
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tech-tag {
+        padding: 0.4rem 1rem;
+        background: white;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      /* Aspiration Roadmap */
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .roadmap-step {
+        position: relative;
+        padding: 2rem;
+        background: linear-gradient(135deg, var(--light) 0%, white 100%);
+        border-radius: 12px;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .roadmap-step:hover {
+        transform: translateY(-5px);
+      }
+
+      .roadmap-step:nth-child(1) {
+        border-left-color: var(--success);
+      }
+      .roadmap-step:nth-child(2) {
+        border-left-color: var(--primary);
+      }
+      .roadmap-step:nth-child(3) {
+        border-left-color: var(--secondary);
+      }
+
+      .roadmap-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .roadmap-label {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        background: var(--primary);
+        color: white;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .roadmap-step:nth-child(1) .roadmap-label {
+        background: var(--success);
+      }
+      .roadmap-step:nth-child(2) .roadmap-label {
+        background: var(--primary);
+      }
+      .roadmap-step:nth-child(3) .roadmap-label {
+        background: var(--secondary);
+      }
+
+      .roadmap-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Testimonial */
+      .testimonial-card {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        padding: 3rem;
+        border-radius: 12px;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+      }
+
+      .quote-icon {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 4rem;
+        color: var(--warning);
+        opacity: 0.3;
+      }
+
+      .testimonial-text {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .testimonial-author {
+        text-align: right;
+        font-weight: bold;
+        color: var(--dark);
+      }
+
+      /* SWOT Analysis */
+      .swot-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .swot-card {
+        padding: 2rem;
+        border-radius: 12px;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .swot-card h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .swot-card:nth-child(1) {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      }
+      .swot-card:nth-child(2) {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      }
+      .swot-card:nth-child(3) {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      }
+      .swot-card:nth-child(4) {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      }
+
+      /* Leadership Cards */
+      .leadership-grid {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .leadership-card {
+        padding: 2rem;
+        background: var(--light);
+        border-left: 5px solid var(--primary);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .leadership-card h4 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Contact Info */
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        padding: 2rem;
+        background: var(--light);
+        border-radius: 12px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-item a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .contact-item a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .cover-page h1 {
+          font-size: 2.5rem;
+        }
+        .timeline::before {
+          left: 20px;
+        }
+        .timeline-item {
+          padding-left: 80px;
+        }
+        .timeline-marker {
+          left: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Cover Page -->
+    <div class="cover-page">
+      <div class="cover-content">
+        <div class="profile-photo">
+          <img src="Kavan.jpg" alt="Kavan" class="profile-photo" />
+        </div>
+        <h1>Kavan Mehulbhai Trivedi</h1>
+        <p class="program">Computer Science and Engineering</p>
+        <p class="university">Pandit Deendayal Energy University (PDEU)</p>
+        <p class="tagline">"Learning with curiosity and purpose"</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Table of Contents -->
+      <div class="toc">
+        <h2>📑 Table of Contents</h2>
+        <ul class="toc-list">
+          <li>
+            <a href="#introduction">Introduction & Learning Philosophy</a>
+          </li>
+          <li><a href="#resume">Resume / CV</a></li>
+          <li><a href="#projects">Interdisciplinary Projects & Research</a></li>
+          <li><a href="#skills">Advanced Skill Development</a></li>
+          <li>
+            <a href="#leadership">Collaborative & Leadership Experiences</a>
+          </li>
+          <li>
+            <a href="#ethics">Global Awareness & Ethical Considerations</a>
+          </li>
+          <li><a href="#aspirations">Future Aspirations</a></li>
+          <li><a href="#conclusion">Conclusion & Self-Assessment</a></li>
+          <li><a href="#testimonial">Testimonial</a></li>
+        </ul>
+      </div>
+
+      <!-- Introduction & Learning Philosophy -->
+      <section id="introduction">
+        <h2>🌟 Introduction & Learning Philosophy</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem">
+          My academic journey is driven by an intrinsic curiosity to understand
+          how technology can transform lives. I believe that true learning
+          happens at the intersection of theory and practice—where concepts meet
+          real-world challenges. Every project I undertake is an opportunity to
+          grow, innovate, and contribute meaningfully to society.
+        </p>
+        <div class="philosophy-grid">
+          <div class="philosophy-card">
+            <h4>💡 Learning Philosophy</h4>
+            <p>
+              Connects theory with real-world application, driven by intrinsic
+              curiosity. Embraces challenges as opportunities for growth.
+            </p>
+          </div>
+          <div class="philosophy-card">
+            <h4>📈 Continuous Improvement</h4>
+            <p>
+              Aims to learn something new every day—be it a framework,
+              algorithm, or leadership trait.
+            </p>
+          </div>
+          <div class="philosophy-card">
+            <h4>🤝 Collaboration</h4>
+            <p>
+              Believes true innovation comes from teamwork and
+              knowledge-sharing.
+            </p>
+          </div>
+          <div class="philosophy-card">
+            <h4>🎯 Purposeful Innovation</h4>
+            <p>
+              Every project should solve a real-world problem or make life
+              simpler.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resume -->
+      <section id="resume">
+        <h2>📄 Resume / CV</h2>
+        <div class="resume-link-container">
+          <a
+            href="Kavan_Trivedi_Resume.pdf"
+            class="resume-link"
+            target="_blank"
+          >
+            📥 Download Full Resume (PDF)
+          </a>
+        </div>
+
+        <h3>🎓 Education</h3>
+        <div class="leadership-card">
+          <h4>B.Tech in Computer Science and Engineering</h4>
+          <p><strong>Pandit Deendayal Energy University (PDEU)</strong></p>
+          <p>Formerly PDPU | Currently Pursuing</p>
+        </div>
+
+        <h3>📧 Contact Information</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            <a href="mailto:23bcp149@sot.pdpu.ac.in">23bcp149@sot.pdpu.ac.in</a>
+          </div>
+          <div class="contact-item">
+            <span>💼</span>
+            <a
+              href="https://www.linkedin.com/in/ka1-trivedi-17025k/"
+              target="_blank"
+              >LinkedIn Profile</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <h2>🚀 Interdisciplinary Projects & Research</h2>
+
+        <div class="timeline">
+          <!-- Project 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Attendease – Smart Attendance System</h3>
+              <div class="project-image-placeholder">
+                <img
+                  src="Attendease.jpg"
+                  alt="Attendease Logo"
+                  class="project-image-placeholder-attendease"
+                />
+              </div>
+              <p>
+                <strong>Overview:</strong> An intelligent attendance automation
+                which includes an Android app for students and a web dashboard
+                for administrators.
+              </p>
+              <p>
+                <strong>Objectives:</strong> Automate attendance tracking,
+                reduce manual errors and provide real-time analytics for
+                educators.
+              </p>
+              <p>
+                <strong>Methodologies:</strong> Implemented RESTful APIs with
+                Flask and created a mobile application for seamless user
+                experience.
+              </p>
+              <p>
+                <strong>Outcomes:</strong> Successfully deployed system reducing
+                attendance time by 70% and improving accuracy to 95%.
+              </p>
+              <p>
+                <strong>Challenges:</strong> Handling varying kinds of data and
+                peforming CURD oprations using multiple kinds of API.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">SQLite</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>
+                Emergency Medical Portal
+                <span class="ethical-badge">🔒 Data Privacy Compliant</span>
+              </h3>
+              <div class="project-image-placeholder">
+                <img
+                  src="emergency_portal.jpg"
+                  alt="emergency_portal symbol image"
+                  class="project-image-placeholder-med"
+                />
+              </div>
+              <p>
+                <strong>Overview:</strong> A responsive web portal designed to
+                connect patients with nearby responders and hospitals using
+                real-time triage. Features emergency alerts, hospital dashboard,
+                and patient tracking.
+              </p>
+              <p>
+                <strong>Objectives:</strong> Reduce emergency response time and
+                improve coordination between patients, responders, and
+                hospitals.
+              </p>
+              <p>
+                <strong>Methodologies:</strong> Built with React.js for dynamic
+                UI, Node.js/Express for backend services, and MongoDB for
+                scalable data storage. Implemented real-time notifications and
+                geolocation services.
+              </p>
+              <p>
+                <strong>Outcomes:</strong> Platform capable of handling 1000+
+                concurrent users with sub-second response times.
+              </p>
+              <p>
+                <strong>Ethical Considerations:</strong> Ensured HIPAA-compliant
+                data encryption, secure authentication, and transparent data
+                usage policies. All patient data encrypted end-to-end.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>Cricket Performance & Video Analysis Platform</h3>
+              <div class="project-image-placeholder">
+                <img
+                  src="cricket_analysis.jpeg"
+                  alt="Cricket Analysis App Logo"
+                  class="project-image-placeholder-cricket"
+                />
+              </div>
+              <p>
+                <strong>Overview:</strong> A deep learning-powered system that
+                detects ball start and end timestamps from full match videos
+                using motion and audio cues. Generates performance analytics for
+                each player automatically.
+              </p>
+              <p>
+                <strong>Objectives:</strong> Automate sports video analysis and
+                provide actionable insights for coaches and analysts.
+              </p>
+              <p>
+                <strong>Methodologies:</strong> Utilized TensorFlow for deep
+                learning models, OpenCV for video processing, and FastAPI for
+                serving predictions. Implemented multi-modal analysis combining
+                visual and audio data.
+              </p>
+              <p>
+                <strong>Outcomes:</strong> Achieved 92% accuracy in ball
+                detection and reduced manual analysis time from hours to
+                minutes.
+              </p>
+              <p>
+                <strong>Challenges:</strong> Handling diverse camera angles and
+                weather conditions. Overcame through data augmentation and
+                ensemble learning.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">NumPy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3>AI Resume Screener (Prototype)</h3>
+              <div class="project-image-placeholder">
+                <img
+                  src="resume_screener.png"
+                  alt="Resume Screnner Symbol"
+                  class="project-image-placeholder-resume"
+                />
+              </div>
+              <p>
+                <strong>Overview:</strong> A prototype system that evaluates
+                resumes using NLP-based models to match candidate profiles with
+                job descriptions, helping automate shortlisting.
+              </p>
+              <p>
+                <strong>Objectives:</strong> Reduce recruitment time and improve
+                candidate-job matching accuracy.
+              </p>
+              <p>
+                <strong>Methodologies:</strong> Implemented NLP using
+                Scikit-learn for text analysis, FastAPI for API services, and
+                created an intuitive web interface.
+              </p>
+              <p>
+                <strong>Outcomes:</strong> Prototype demonstrated 85% accuracy
+                in matching relevant candidates.
+              </p>
+              <p>
+                <strong>Challenges:</strong> Avoiding algorithmic bias.
+                Addressed through diverse training data and fairness metrics.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">ML & DL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advanced Skills -->
+      <section id="skills">
+        <h2>💻 Advanced Skill Development & Mastery</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem">
+          My technical skillset spans multiple domains, from backend development
+          to machine learning. Below is a visual representation of my
+          proficiency levels across key technologies.
+        </p>
+
+        <div class="skills-container">
+          <!-- Skill 1: Python -->
+          <div class="skill-gauge">
+            <div class="skill-name">Python</div>
+            <div class="gauge-container">
+              <div class="gauge-bg"></div>
+              <div class="gauge-fill expert"></div>
+              <div class="gauge-center">90%</div>
+            </div>
+            <span class="proficiency-label expert-label">Expert</span>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--gray)">
+              Strong in data analysis, automation, and deep learning model
+              development. Frequently used for AI-driven applications and
+              backend APIs.
+            </p>
+          </div>
+
+          <!-- Skill 2: Java -->
+          <div class="skill-gauge">
+            <div class="skill-name">Java</div>
+            <div class="gauge-container">
+              <div class="gauge-bg"></div>
+              <div class="gauge-fill advanced"></div>
+              <div class="gauge-center">70%</div>
+            </div>
+            <span class="proficiency-label advanced-label">Advanced</span>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--gray)">
+              Proficient in Spring Boot and backend development; experienced in
+              building scalable web applications and RESTful APIs.
+            </p>
+          </div>
+
+          <!-- Skill 3: React.js -->
+          <div class="skill-gauge">
+            <div class="skill-name">JavaScript (React.js)</div>
+            <div class="gauge-container">
+              <div class="gauge-bg"></div>
+              <div class="gauge-fill intermediate"></div>
+              <div class="gauge-center">60%</div>
+            </div>
+            <span class="proficiency-label intermediate-label"
+              >Intermediate</span
+            >
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--gray)">
+              Used for developing responsive, interactive, and dynamic user
+              interfaces for modern web apps.
+            </p>
+          </div>
+
+          <!-- Skill 4: FastAPI & Flask -->
+          <div class="skill-gauge">
+            <div class="skill-name">FastAPI & Flask</div>
+            <div class="gauge-container">
+              <div class="gauge-bg"></div>
+              <div class="gauge-fill advanced"></div>
+              <div class="gauge-center">70%</div>
+            </div>
+            <span class="proficiency-label advanced-label">Advanced</span>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--gray)">
+              Designed and deployed efficient REST APIs with strong integration
+              between ML models and web interfaces.
+            </p>
+          </div>
+
+          <!-- Skill 5: MongoDB & MySQL -->
+          <div class="skill-gauge">
+            <div class="skill-name">MongoDB & MySQL</div>
+            <div class="gauge-container">
+              <div class="gauge-bg"></div>
+              <div class="gauge-fill advanced"></div>
+              <div class="gauge-center">70%</div>
+            </div>
+            <span class="proficiency-label advanced-label">Intermediate</span>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--gray)">
+              Experience in designing normalized and NoSQL schemas for
+              data-driven applications.
+            </p>
+          </div>
+
+          <!-- Skill 6: ML & DL -->
+          <div class="skill-gauge">
+            <div class="skill-name">Machine Learning & Deep Learning</div>
+            <div class="gauge-container">
+              <div class="gauge-bg"></div>
+              <div class="gauge-fill intermediate"></div>
+              <div class="gauge-center">60%</div>
+            </div>
+            <span class="proficiency-label intermediate-label"
+              >Intermediate</span
+            >
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--gray)">
+              Hands-on experience with TensorFlow and Scikit-learn for model
+              training, evaluation, and deployment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leadership & Collaboration -->
+      <section id="leadership">
+        <h2>🤝 Collaborative & Leadership Experiences</h2>
+        <div class="leadership-grid">
+          <div class="leadership-card">
+            <h4>Team Lead, AI Project Group (2024)</h4>
+            <p><strong>Role:</strong> Project Leader</p>
+            <p>
+              <strong>Responsibilities:</strong> Managed a team of 4 in
+              developing a real-time cricket analysis system. Coordinated
+              meetings, delegated tasks, and ensured project milestones were
+              met.
+            </p>
+            <p>
+              <strong>Achievements:</strong> Successfully delivered the project
+              on time with 92% accuracy in ball detection.
+            </p>
+            <p>
+              <strong>Team Dynamics:</strong> Fostered open communication and
+              encouraged knowledge-sharing sessions.
+            </p>
+          </div>
+
+          <div class="leadership-card">
+            <h4>Project Coordinator, Emergency Medical Portal (2024)</h4>
+            <p><strong>Role:</strong> Project Coordinator</p>
+            <p>
+              <strong>Responsibilities:</strong> Led a 5-member team to build a
+              web-based emergency medical response portal. Oversaw
+              frontend-backend integration and used Git/agile practices.
+            </p>
+            <p>
+              <strong>Achievements:</strong> Delivered a scalable platform
+              capable of handling 1000+ concurrent users.
+            </p>
+            <p>
+              <strong>Conflict Resolution:</strong> Addressed technical
+              disagreements through structured code reviews and collaborative
+              problem-solving.
+            </p>
+          </div>
+
+          <div class="leadership-card">
+            <h4>Co-developer, Attendease (2023)</h4>
+            <p><strong>Role:</strong> Co-Developer</p>
+            <p>
+              <strong>Responsibilities:</strong> Collaborated in a 2-person team
+              on an automated attendance system using face recognition and QR
+              fallback.
+            </p>
+            <p>
+              <strong>Achievements:</strong> Reduced attendance time by 70% and
+              achieved 95% accuracy.
+            </p>
+            <p>
+              <strong>Collaboration:</strong> Maintained continuous
+              communication and pair programming sessions.
+            </p>
+          </div>
+
+          <div class="leadership-card">
+            <h4>Hackathon Mentor (2025)</h4>
+            <p><strong>Role:</strong> Technical Mentor</p>
+            <p>
+              <strong>Responsibilities:</strong> Guided two junior teams,
+              helping them debug backend APIs and optimize logic.
+            </p>
+            <p>
+              <strong>Achievements:</strong> Both teams successfully completed
+              their projects and one team secured second place.
+            </p>
+            <p>
+              <strong>Leadership Style:</strong> Encouraged independent
+              problem-solving while providing guidance when needed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Global Awareness & Ethics -->
+      <section id="ethics">
+        <h2>🌍 Global Awareness & Ethical Considerations</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem">
+          As a technologist, I recognize the profound impact that software and
+          AI systems can have on society. My work is guided by principles of
+          fairness, transparency, and accountability. I am committed to
+          developing solutions that respect user privacy, promote inclusivity,
+          and address global challenges responsibly.
+        </p>
+
+        <h3>🔐 Data Privacy & Security</h3>
+        <div class="leadership-card">
+          <p>
+            In the <strong>Emergency Medical Portal</strong> project, I ensured
+            full compliance with data protection principles by implementing
+            end-to-end encryption for all patient data. Access controls were
+            strictly enforced, and audit trails were maintained to track data
+            access patterns.
+          </p>
+        </div>
+
+        <h3>⚖️ Algorithmic Fairness</h3>
+        <div class="leadership-card">
+          <p>
+            The <strong>AI Resume Screener</strong> prototype was designed with
+            fairness metrics to avoid bias based on gender, ethnicity, or
+            background. Training data was carefully curated to represent diverse
+            demographics, and model outputs were regularly audited for
+            discriminatory patterns.
+          </p>
+        </div>
+
+        <h3>🌐 Global Perspective</h3>
+        <div class="leadership-card">
+          <p>
+            My awareness of global issues such as data misuse, algorithmic bias,
+            and sustainability shapes my approach to technology. I actively
+            follow AI ethics guidelines from organizations like IEEE and ACM,
+            and I strive to implement these principles in every project I
+            undertake.
+          </p>
+        </div>
+
+        <h3>📚 Case Study: Ethical AI in Healthcare</h3>
+        <div class="leadership-card">
+          <p>
+            <strong>Scenario:</strong> While developing the Emergency Medical
+            Portal, we faced a dilemma regarding data retention. Should patient
+            data be stored indefinitely for research purposes, or should it be
+            deleted after a certain period to protect privacy?
+          </p>
+          <p>
+            <strong>Analysis:</strong> After consulting ethical frameworks and
+            data protection regulations, we implemented a 30-day retention
+            policy with anonymization for research purposes. Patients were given
+            explicit consent options and full control over their data.
+          </p>
+          <p>
+            <strong>Reflection:</strong> This experience reinforced my belief
+            that ethical considerations should be integrated into the design
+            phase, not as an afterthought.
+          </p>
+        </div>
+      </section>
+
+      <!-- Future Aspirations -->
+      <section id="aspirations">
+        <h2>🎯 Future Aspirations & Professional Development</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem">
+          My vision is to become a
+          <strong
+            >Machine Learning Engineer specializing in computer vision and
+            sports analytics</strong
+          >
+          within the next five years. I am committed to continuous learning and
+          contributing to the advancement of AI technology through research,
+          open-source contributions, and real-world applications.
+        </p>
+
+        <div class="roadmap">
+          <div class="roadmap-step">
+            <div class="roadmap-icon">🎓</div>
+            <div class="roadmap-label">SHORT-TERM</div>
+            <div class="roadmap-title">Master's in Artificial Intelligence</div>
+            <p>
+              Pursue advanced studies in AI with a focus on computer vision and
+              deep learning. Target universities with strong research programs
+              in these areas.
+            </p>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="roadmap-icon">💻</div>
+            <div class="roadmap-label">MEDIUM-TERM</div>
+            <div class="roadmap-title">Open-Source Contribution</div>
+            <p>
+              Actively contribute to open-source projects focused on AI ethics,
+              sports analytics, and computer vision. Build a strong GitHub
+              profile and collaborate with the global developer community.
+            </p>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="roadmap-icon">🚀</div>
+            <div class="roadmap-label">LONG-TERM</div>
+            <div class="roadmap-title">ML Engineer Role</div>
+            <p>
+              Secure a position as a Machine Learning Engineer at a leading tech
+              company or research lab. Lead innovative projects that push the
+              boundaries of what's possible with AI.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 3rem">📈 Continuous Improvement Strategy</h3>
+        <div class="leadership-card">
+          <p>
+            ✅ <strong>Certifications:</strong> Pursuing certifications in
+            TensorFlow, AWS Machine Learning, and Deep Learning
+            Specialization.<br />
+            ✅ <strong>Research:</strong> Planning to publish papers on sports
+            video analysis and real-time object detection.<br />
+            ✅ <strong>Networking:</strong> Attending AI conferences, webinars,
+            and connecting with industry professionals.<br />
+            ✅ <strong>Skill Development:</strong> Learning advanced topics like
+            reinforcement learning, GANs, and edge AI.
+          </p>
+        </div>
+      </section>
+
+      <!-- Conclusion & Self-Assessment -->
+      <section id="conclusion">
+        <h2>🎓 Conclusion & Self-Assessment</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem">
+          Reflecting on my academic journey, I am proud of the projects I've
+          completed and the skills I've developed. Each experience has taught me
+          valuable lessons about teamwork, problem-solving, and the importance
+          of ethical considerations in technology. Moving forward, I am
+          committed to continuous growth and making meaningful contributions to
+          the field of artificial intelligence.
+        </p>
+
+        <h3>🔑 Key Achievements</h3>
+        <div class="leadership-card">
+          <ul style="margin-left: 1.5rem; line-height: 2">
+            <li>
+              Successfully led and contributed to 4 major interdisciplinary
+              projects
+            </li>
+            <li>
+              Developed expertise in Python, Java, Machine Learning, and
+              Full-Stack Development
+            </li>
+            <li>
+              Mentored junior students and fostered a collaborative learning
+              environment
+            </li>
+            <li>
+              Integrated ethical considerations into every project, particularly
+              data privacy and algorithmic fairness
+            </li>
+            <li>
+              Built a strong foundation for pursuing advanced studies and a
+              career in ML Engineering
+            </li>
+          </ul>
+        </div>
+
+        <h3>📖 Lessons Learned</h3>
+        <div class="leadership-card">
+          <p>
+            <strong>Technical:</strong> The importance of modular code design,
+            version control, and thorough testing.<br />
+            <strong>Interpersonal:</strong> Effective communication and conflict
+            resolution are as crucial as technical skills.<br />
+            <strong>Ethical:</strong> Technology decisions have far-reaching
+            consequences; ethical considerations must be prioritized.<br />
+            <strong>Personal:</strong> Patience, persistence, and a growth
+            mindset are essential for overcoming challenges.
+          </p>
+        </div>
+
+        <h3>🎯 SWOT Analysis</h3>
+        <div class="swot-grid">
+          <div class="swot-card">
+            <h4>💪 Strengths</h4>
+            <ul style="margin-left: 1.5rem; line-height: 1.8">
+              <li>Strong technical skills across multiple domains</li>
+              <li>Proven ability to work in teams and lead projects</li>
+              <li>Commitment to ethical technology development</li>
+              <li>Continuous learning mindset</li>
+            </ul>
+          </div>
+
+          <div class="swot-card">
+            <h4>⚠️ Weaknesses</h4>
+            <ul style="margin-left: 1.5rem; line-height: 1.8">
+              <li>Time management during multiple concurrent projects</li>
+              <li>Limited experience with cloud deployment at scale</li>
+              <li>Need to improve public speaking skills</li>
+            </ul>
+          </div>
+
+          <div class="swot-card">
+            <h4>🌟 Opportunities</h4>
+            <ul style="margin-left: 1.5rem; line-height: 1.8">
+              <li>Growing demand for AI/ML professionals</li>
+              <li>Opportunities in sports analytics and healthcare tech</li>
+              <li>Access to online courses and research communities</li>
+              <li>Potential for advanced studies and research</li>
+            </ul>
+          </div>
+
+          <div class="swot-card">
+            <h4>⚡ Threats</h4>
+            <ul style="margin-left: 1.5rem; line-height: 1.8">
+              <li>Rapid technological changes requiring constant upskilling</li>
+              <li>Highly competitive field</li>
+              <li>
+                Addressed through continuous learning and staying updated with
+                industry trends
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 3rem">🔮 Looking Ahead</h3>
+        <div class="leadership-card">
+          <p>
+            As I continue my journey, I am excited about the possibilities that
+            lie ahead. I am committed to pushing the boundaries of what's
+            possible with AI, contributing to meaningful research, and building
+            solutions that make a positive impact on society. The lessons I've
+            learned and the skills I've developed have prepared me well for the
+            challenges and opportunities that await.
+          </p>
+        </div>
+      </section>
+
+      <!-- Testimonial -->
+      <section id="testimonial">
+        <h2>💬 Testimonial</h2>
+        <div class="testimonial-card">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">
+            "Kavan is a highly dedicated and innovative student with excellent
+            problem-solving skills. His leadership and technical expertise make
+            him a valuable team player in any environment."
+          </p>
+          <p class="testimonial-author">
+            — Dr. Daivagna Parmar, Professor<br />
+            Computer Science & Engineering, PDEU
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <footer
+      style="
+        background: var(--dark);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 4rem;
+      "
+    >
+      <p>&copy; 2025 Kavan Mehulbhai Trivedi | All Rights Reserved</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem">
+        Created with passion and purpose 💙
+      </p>
+    </footer>
+  </body>
+</html>
