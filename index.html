@@ -12,13 +12,13 @@
       }
 
       :root {
-        --primary: #2563eb;
-        --secondary: #7c3aed;
-        --accent: #f59e0b;
-        --dark: #1e293b;
-        --light: #f8fafc;
+        --primary: #0ea5e9;
+        --secondary: #8b5cf6;
+        --accent: #f97316;
+        --dark: #0f172a;
+        --light: #f1f5f9;
         --gray: #64748b;
-        --success: #10b981;
+        --success: #22c55e;
         --warning: #f59e0b;
       }
 
@@ -26,7 +26,7 @@
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
         color: var(--dark);
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--light);
         scroll-behavior: smooth;
       }
 
@@ -42,6 +42,12 @@
         padding: 2rem;
         position: relative;
         overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #0ea5e9 0%,
+          #8b5cf6 50%,
+          #f97316 100%
+        );
       }
 
       .cover-page::before {
@@ -51,45 +57,38 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.2);
         z-index: 1;
+      }
+
+      /* Smooth transition wave */
+      .cover-page::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: var(--light);
+        clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
+        z-index: 2;
       }
 
       .cover-content {
         position: relative;
-        z-index: 2;
+        z-index: 3;
         animation: fadeInUp 1s ease-out;
       }
 
-      /* .profile-photo {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 5px solid white;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        margin-bottom: 2rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        font-weight: bold;
-      } */
       .profile-photo img {
         width: 200px;
         height: 200px;
         object-fit: contain;
-        background-color: #fff; /* fills background if needed */
+        background-color: #fff;
         border-radius: 50%;
         border: 5px solid white;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         margin-bottom: 2rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        font-size: 3rem;
-        font-weight: bold;
       }
 
       .cover-page h1 {
@@ -115,7 +114,7 @@
         font-style: italic;
         margin: 2rem 0;
         padding: 1rem 2rem;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.15);
         border-radius: 50px;
         backdrop-filter: blur(10px);
       }
@@ -136,12 +135,12 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
-        background: white;
+        background: var(--light);
       }
 
       /* Table of Contents */
       .toc {
-        background: var(--light);
+        background: white;
         padding: 3rem;
         border-radius: 15px;
         margin: 3rem 0;
@@ -165,7 +164,7 @@
       .toc-list li a {
         display: block;
         padding: 1rem 1.5rem;
-        background: white;
+        background: var(--light);
         border-left: 4px solid var(--primary);
         border-radius: 8px;
         text-decoration: none;
@@ -178,6 +177,7 @@
         transform: translateX(10px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-left-color: var(--secondary);
+        background: white;
       }
 
       /* Section Styles */
@@ -213,7 +213,7 @@
 
       .philosophy-card {
         padding: 2rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
         color: white;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -233,7 +233,7 @@
       .resume-link-container {
         text-align: center;
         padding: 3rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
         border-radius: 15px;
         margin: 2rem 0;
       }
@@ -360,45 +360,57 @@
         background: var(--warning);
       }
 
-      /* Project Timeline */
+      /* Project Timeline with Side Images */
       .timeline {
         position: relative;
         padding: 2rem 0;
       }
 
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 50px;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: linear-gradient(
-          to bottom,
-          var(--primary),
-          var(--secondary)
-        );
-      }
-
       .timeline-item {
         position: relative;
-        padding: 2rem 0 2rem 120px;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
       }
 
-      .timeline-marker {
-        position: absolute;
-        left: 38px;
-        top: 2rem;
-        width: 25px;
-        height: 25px;
-        background: var(--primary);
-        border: 4px solid white;
-        border-radius: 50%;
-        box-shadow: 0 0 0 4px var(--primary);
+      .timeline-item:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .project-image-container {
+        flex: 0 0 300px;
+        min-width: 300px;
+      }
+
+      .project-image-container img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .project-image-container img:hover {
+        transform: scale(1.05);
+      }
+
+      .project-image-container-attendease img {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .project-image-container-attendease img:hover {
+        transform: scale(1.05);
       }
 
       .timeline-content {
+        flex: 1;
         background: var(--light);
         padding: 2rem;
         border-radius: 12px;
@@ -421,65 +433,6 @@
         font-size: 0.9rem;
         font-weight: bold;
         margin-left: 1rem;
-      }
-
-      /* .project-image-placeholder {
-        width: 100%;
-        height: 300px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin: 1.5rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      } */
-
-      .project-image-placeholder-attendease {
-        width: 100%;
-        height: 350px;
-        border-radius: 12px; /* smooth corners */
-        display: flex;
-        align-items: center;
-        color: white;
-        margin: 1.5rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .project-image-placeholder-med {
-        width: 100%;
-        height: 350px;
-        border-radius: 12px; /* smooth corners */
-        display: flex;
-        align-items: center;
-        color: white;
-        margin: 1.5rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .project-image-placeholder-cricket {
-        width: 100%;
-        height: 350px;
-        border-radius: 12px; /* smooth corners */
-        display: flex;
-        align-items: center;
-        color: white;
-        margin: 1.5rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .project-image-placeholder-resume {
-        width: 100%;
-        height: 350px;
-        border-radius: 12px; /* smooth corners */
-        display: flex;
-        align-items: center;
-        color: white;
-        margin: 1.5rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
       .tech-tags {
@@ -619,16 +572,16 @@
       }
 
       .swot-card:nth-child(1) {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
       }
       .swot-card:nth-child(2) {
         background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
       }
       .swot-card:nth-child(3) {
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
       }
       .swot-card:nth-child(4) {
-        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
       }
 
       /* Leadership Cards */
@@ -688,14 +641,18 @@
         .cover-page h1 {
           font-size: 2.5rem;
         }
-        .timeline::before {
-          left: 20px;
-        }
+
         .timeline-item {
-          padding-left: 80px;
+          flex-direction: column !important;
         }
-        .timeline-marker {
-          left: 8px;
+
+        .project-image-container {
+          flex: 1;
+          min-width: 100%;
+        }
+
+        .project-image-container img {
+          height: 200px;
         }
       }
     </style>
@@ -705,7 +662,7 @@
     <div class="cover-page">
       <div class="cover-content">
         <div class="profile-photo">
-          <img src="Kavan.jpg" alt="Kavan" class="profile-photo" />
+          <img src="Kavan.jpg" alt="Kavan" />
         </div>
         <h1>Kavan Mehulbhai Trivedi</h1>
         <p class="program">Computer Science and Engineering</p>
@@ -823,16 +780,11 @@
         <div class="timeline">
           <!-- Project 1 -->
           <div class="timeline-item">
-            <div class="timeline-marker"></div>
+            <div class="project-image-container-attendease">
+              <img src="Attendease.jpg" alt="Attendease Logo" />
+            </div>
             <div class="timeline-content">
               <h3>Attendease – Smart Attendance System</h3>
-              <div class="project-image-placeholder">
-                <img
-                  src="Attendease.jpg"
-                  alt="Attendease Logo"
-                  class="project-image-placeholder-attendease"
-                />
-              </div>
               <p>
                 <strong>Overview:</strong> An intelligent attendance automation
                 which includes an Android app for students and a web dashboard
@@ -854,7 +806,7 @@
               </p>
               <p>
                 <strong>Challenges:</strong> Handling varying kinds of data and
-                peforming CURD oprations using multiple kinds of API.
+                performing CRUD operations using multiple kinds of API.
               </p>
               <div class="tech-tags">
                 <span class="tech-tag">Python</span>
@@ -868,19 +820,14 @@
 
           <!-- Project 2 -->
           <div class="timeline-item">
-            <div class="timeline-marker"></div>
+            <div class="project-image-container">
+              <img src="emergency_portal.jpg" alt="Emergency Portal" />
+            </div>
             <div class="timeline-content">
               <h3>
                 Emergency Medical Portal
                 <span class="ethical-badge">🔒 Data Privacy Compliant</span>
               </h3>
-              <div class="project-image-placeholder">
-                <img
-                  src="emergency_portal.jpg"
-                  alt="emergency_portal symbol image"
-                  class="project-image-placeholder-med"
-                />
-              </div>
               <p>
                 <strong>Overview:</strong> A responsive web portal designed to
                 connect patients with nearby responders and hospitals using
@@ -918,16 +865,11 @@
 
           <!-- Project 3 -->
           <div class="timeline-item">
-            <div class="timeline-marker"></div>
+            <div class="project-image-container">
+              <img src="cricket_analysis.jpeg" alt="Cricket Analysis" />
+            </div>
             <div class="timeline-content">
               <h3>Cricket Performance & Video Analysis Platform</h3>
-              <div class="project-image-placeholder">
-                <img
-                  src="cricket_analysis.jpeg"
-                  alt="Cricket Analysis App Logo"
-                  class="project-image-placeholder-cricket"
-                />
-              </div>
               <p>
                 <strong>Overview:</strong> A deep learning-powered system that
                 detects ball start and end timestamps from full match videos
@@ -966,16 +908,11 @@
 
           <!-- Project 4 -->
           <div class="timeline-item">
-            <div class="timeline-marker"></div>
+            <div class="project-image-container">
+              <img src="resume_screener.png" alt="Resume Screener" />
+            </div>
             <div class="timeline-content">
               <h3>AI Resume Screener (Prototype)</h3>
-              <div class="project-image-placeholder">
-                <img
-                  src="resume_screener.png"
-                  alt="Resume Screnner Symbol"
-                  class="project-image-placeholder-resume"
-                />
-              </div>
               <p>
                 <strong>Overview:</strong> A prototype system that evaluates
                 resumes using NLP-based models to match candidate profiles with
